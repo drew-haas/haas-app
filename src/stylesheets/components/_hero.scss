@@ -1,0 +1,29 @@
+.heroSection {
+    //background-image: url('../assets/images/transparent-dirt-texture.png');
+    background-size: cover;
+    width: 100%;
+}
+
+.bgtext {
+    @include center-absolute;
+    font-family: 'editionregular';
+    font-size: 50vh;
+    color: $primary;
+    pointer-events: none;
+    filter: blur(5px);
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
+
+.grid_container {
+    @include center-relative;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    max-width: 80%;
+}   
+
+.grid_item {
+    background-color: beige;
+}
