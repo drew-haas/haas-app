@@ -7,7 +7,8 @@ class Header extends Component {
 
     // state properties
     this.state = {
-      navigationOpen: false
+      navigationOpen: false,
+      filteredBy: 'all'
     };
     
     // menu nav items
@@ -18,6 +19,7 @@ class Header extends Component {
     this.toggleNavigation = this.toggleNavigation.bind(this);
     this.closeNav = this.closeNav.bind(this);
     this.openNav = this.openNav.bind(this);
+    this.filterPage = this.filterPage.bind(this);
   }
 
   openNav() {
@@ -40,6 +42,23 @@ class Header extends Component {
     }
   }
 
+  filterPage(filter) {
+    // TODO: create function to display only the filtered options in the grid
+    //
+    var gridItems = document.querySelectorAll('.grid_row');
+    var filteredItems = document.querySelectorAll('.grid_type-' + filter);
+
+    for (var i = 0; i < gridItems.length; i++){
+      gridItems[i].classList.add('hidden');
+    }
+    for (var j = 0; j < filteredItems.length; j++){
+      filteredItems[j].classList.remove('hidden');
+    }
+
+    // Then Close Nav
+    this.closeNav();
+  }
+
   componentDidMount(){
     this.menuTl.to(document.querySelector('.menu_bar'), .5, {width: '100%', ease: Expo.easeInOut})
                .to(document.querySelector('.menu_bar'), .5, {height: '100vh', ease: Expo.easeInOut}, '-=.1')
@@ -50,14 +69,15 @@ class Header extends Component {
     return (
       <div className="header_container">
         <header>
-          <div className="logo"><div className="logo-text">Dh</div></div>
+          <a href="/"><div className="logo"><div className="logo-text">Dh</div></div></a>
           <div className="menu">
             <div className="menu_container">
               <div className="menu_bar"></div>
               <div className="menu_content">
                 <ul>
-                  <li><span className="menu_link_container">Work</span></li>
-                  <li><span className="menu_link_container life">Life</span></li>
+                  <li className="menu_link"><span className="menu_link_container" onClick={() => this.filterPage('work')}>Work</span></li>
+                  <li className="menu_link"><span className="menu_link_container life" onClick={() => this.filterPage('life')}>Life</span></li>
+                  <li className="menu_text"><span className="menu_link_container"><code>andrewfhaas@gmail.com</code></span></li>
                 </ul>
               </div>
             </div>
