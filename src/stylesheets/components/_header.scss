@@ -99,10 +99,13 @@ header {
         margin: 0;
         
         li {
-            font-family: 'editionregular';
             list-style-type: none;
-            font-size: 170px;
             overflow: hidden;
+
+            &.menu_link {
+                font-size: 170px;    
+                font-family: 'editionregular';
+            }
         }
     }
 
