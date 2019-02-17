@@ -32,8 +32,8 @@
 .grid_row {
     width: 100%;
     padding: 0 60px;
-    margin: 100px 0;
-    height: 55vh;
+    margin: 140px 0;
+    height: 50vh;
     box-sizing: border-box;
     position: relative;
     font-family: 'Abel';
@@ -58,7 +58,7 @@
 .grid_item {
     @include center-absolute;
     height: 100%;
-    width: 46%;
+    width: 80%;
     color: $main-light;
     cursor: pointer;
 
