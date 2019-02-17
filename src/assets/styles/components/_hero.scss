@@ -1,0 +1,143 @@
+.heroSection {
+    background-size: cover;
+    width: 100%;
+
+    p {
+        font-family: 'Abel';
+    }
+}
+
+.bgtext { 
+    position: fixed;
+    font-family: 'editionregular';
+    font-size: 48vh;
+    color: #ddd;
+    pointer-events: none;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    bottom: -16px;
+    left: -47px;
+}
+
+.grid_container {
+    margin: 0 auto;
+    position: relative;
+    padding: 100px 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    max-width: 880px;
+    width: calc(100% - 120px);
+}
+
+.grid_row {
+    width: 100%;
+    padding: 0 60px;
+    margin: 100px 0;
+    height: 55vh;
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Abel';
+
+    @media screen and (max-width: 767px) {
+        margin: 100px 0;
+    }
+
+    &:first-of-type {
+        margin-top: 30px;
+    }
+    
+    &:nth-child(even) {
+        .grid_item {
+            &-img {
+                transform: rotate(2deg);
+            }
+        }
+    }
+}
+
+.grid_item {
+    @include center-absolute;
+    height: 100%;
+    width: 46%;
+    color: $main-light;
+    cursor: pointer;
+
+    &:hover {
+        .grid_item-img {
+            filter: grayscale(0%);
+            transition: filter .3s;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 80%;
+    }
+
+    &-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $primary;
+    }
+
+    &-title {
+        position: absolute;
+        transform: rotate(180deg);
+        writing-mode: vertical-rl;
+        left: -31px;
+        top: 0;
+        font-size: 20px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        transition: color .3s;
+    }
+
+    &-img-wrap {
+        @include center-absolute;
+        width: 80%;
+        height: 80%;
+        margin: 0 auto;
+    }
+
+    &-img {
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        transform: rotate(-2deg);
+        filter: grayscale(100%);
+        transition: filter .3s; 
+    }
+
+    &-number {
+        position: absolute;
+        bottom: -40px;
+        right: -30px;
+        font-size: 82px;
+        line-height: 1;
+
+        .number {
+            position: relative;
+            display: inline-block;
+        }
+    }
+}
+
+.clear_button {
+    cursor: pointer;
+    padding: 10px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 165px;
+    letter-spacing: 5px;
+    right: 15px;
+    transform: rotate(90deg);
+    transform-origin: 100% 0;
+    line-height: 1;
+    font-size: 14px;
+    color: $accent;
+    font-family: 'Abel';
+    font-weight: bold;
+}
