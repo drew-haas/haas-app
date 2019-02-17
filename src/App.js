@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import './stylesheets/Main.scss';
+import './assets/styles/Main.scss';
 
 class App extends Component {
   render() {
