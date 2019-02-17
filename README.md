@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Trying to make it work [here](https://drew-haas.github.io/haas-app/).
+
 ## Available Scripts
 
 In the project directory, you can run:
