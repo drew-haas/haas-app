@@ -24,12 +24,14 @@ class Header extends Component {
 
   openNav() {
     document.querySelector('.menu').classList.add('open');
+    document.querySelector('.menu_icon').classList.add('open');
     this.setState({ navigationOpen: true });
     this.menuTl.play();
   }
 
   closeNav() {
     document.querySelector('.menu').classList.remove('open');
+    document.querySelector('.menu_icon').classList.remove('open');
     this.setState({ navigationOpen: false });
     this.menuTl.reverse();
   }
@@ -43,33 +45,48 @@ class Header extends Component {
   }
 
   filterPage(filter) {
-    // TODO: create function to display only the filtered options in the grid
-    //
+    // display only the filtered options in the grid
     var gridItems = document.querySelectorAll('.grid_row');
     var filteredItems = document.querySelectorAll('.grid_type-' + filter);
 
+    // hide all
     for (var i = 0; i < gridItems.length; i++){
       gridItems[i].classList.add('hidden');
     }
+
+    // show filtered by
     for (var j = 0; j < filteredItems.length; j++){
       filteredItems[j].classList.remove('hidden');
     }
+
+    // show clear option
+    document.querySelector('.clear_button').classList.remove('hidden');
+
+    // set scroll position to top of page
+    document.documentElement.scrollTop = 0;
 
     // Then Close Nav
     this.closeNav();
   }
 
+  // component ready...
   componentDidMount(){
     this.menuTl.to(document.querySelector('.menu_bar'), .5, {width: '100%', ease: Expo.easeInOut})
                .to(document.querySelector('.menu_bar'), .5, {height: '100vh', ease: Expo.easeInOut}, '-=.1')
-               .staggerTo(document.querySelectorAll('.menu_link_container'), .8, {y: 0, opacity: 1, ease: Expo.easeOut}, .1, '-=.4');
+               .staggerTo(document.querySelectorAll('.menu_link_container'), .5, {y: 0, opacity: 1, ease: Expo.easeOut}, .1, '-=.4');
+
+    window.addEventListener("resize", function() {
+      TweenMax.set(document.querySelector('.menu_bar'), {width: '60px'});
+      // TODO: make sure the nav bar doesn't use a percent on close
+      // --- this makes the nav change size when closed
+    });
   }
 
   render() {
     return (
       <div className="header_container">
         <header>
-          <a href="/"><div className="logo"><div className="logo-text">Dh</div></div></a>
+          <a href="/"><div className="logo"><div className="logo-text"></div></div></a>
           <div className="menu">
             <div className="menu_container">
               <div className="menu_bar"></div>
