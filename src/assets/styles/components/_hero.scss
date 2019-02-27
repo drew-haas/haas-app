@@ -1,9 +1,28 @@
 .heroSection {
     background-size: cover;
     width: 100%;
+    overflow: hidden;
 
     p {
         font-family: 'Abel';
+    }
+}
+
+.hero-text-container {
+    position: relative;
+    color: $accentTwo;
+    text-align: left;
+    font-family: 'Helvetica';
+    z-index: 1;
+    max-width: 1040px;
+    width: 80%;
+    margin: 100px auto 0;
+
+    h2 {
+        font-size: 50px;
+        max-width: 400px;
+        line-height: 1;
+        margin: 0;
     }
 }
 
@@ -24,9 +43,14 @@
     position: relative;
     padding: 100px 0;
     box-sizing: border-box;
-    min-height: 100vh;
     max-width: 880px;
     width: calc(100% - 120px);
+
+    &.hidden {
+        display: inherit;
+        height: 0;
+        overflow: hidden;
+    }
 }
 
 .grid_row {
@@ -125,11 +149,55 @@
     }
 }
 
+.content_container {
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    background-color: #e8e8e8;
+    color: black;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    .close_button {
+        @include center-absolute;
+        position: fixed;
+        z-index: 2;
+        cursor: pointer;
+    }
+}
+
+.content_item {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: none;
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: left;
+
+    &.current {
+        height: auto;
+        min-height: 100vh;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &-img {
+        width: 400px;
+        height: 30vh;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+// filter clear button
 .clear_button {
     cursor: pointer;
     padding: 10px;
     text-transform: uppercase;
-    position: absolute;
+    position: fixed;
     top: 165px;
     letter-spacing: 5px;
     right: 15px;
