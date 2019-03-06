@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/haas-app/precache-manifest.df4b7d7c2fb24c8614ce14eb2e6d8d8a.js"
+  "/haas-app/precache-manifest.328c98cd4574b4fa52ededbb1cfe9e4b.js"
 );
 
 workbox.clientsClaim();
